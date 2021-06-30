@@ -261,6 +261,7 @@ class SmartRefresher extends StatefulWidget {
         dragStartBehavior = null,
         cacheExtent = null,
         primary = null,
+        prefixLayout = null,
         super(key: key);
 
   static SmartRefresher? of(BuildContext? context) {
@@ -326,7 +327,7 @@ class SmartRefresherState extends State<SmartRefresher> {
     }
 
     if (widget.prefixLayout != null) {
-      slivers?.insert(0, widget.prefixLayout);
+      slivers?.insert(0, widget.prefixLayout ?? Container());
     }
 
     //insert header or footer
