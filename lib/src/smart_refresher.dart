@@ -133,7 +133,7 @@ class SmartRefresher extends StatefulWidget {
   /// if you pass not a sliver,it will throw error
   final Widget? header;
 
-  final Widget? prefixLayout;
+  final List<Widget>? prefixSlivers;
 
   /// footer indicator display after content
   ///
@@ -228,7 +228,7 @@ class SmartRefresher extends StatefulWidget {
     this.physics,
     this.scrollDirection,
     this.scrollController,
-    this.prefixLayout})
+    this.prefixSlivers})
       : builder = null,
         super(key: key);
 
@@ -261,7 +261,7 @@ class SmartRefresher extends StatefulWidget {
         dragStartBehavior = null,
         cacheExtent = null,
         primary = null,
-        prefixLayout = null,
+        prefixSlivers = null,
         super(key: key);
 
   static SmartRefresher? of(BuildContext? context) {
@@ -326,8 +326,8 @@ class SmartRefresherState extends State<SmartRefresher> {
               defaultHeader);
     }
 
-    if (widget.prefixLayout != null) {
-      slivers?.insert(0, widget.prefixLayout ?? Container());
+    if (widget.prefixSlivers != null) {
+      slivers?.insertAll(0, widget.prefixSlivers!);
     }
 
     //insert header or footer
