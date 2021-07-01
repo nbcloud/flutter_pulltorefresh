@@ -316,6 +316,10 @@ class SmartRefresherState extends State<SmartRefresher> {
       ];
     }
 
+    if (widget.prefixSlivers != null) {
+      slivers?.insertAll(0, widget.prefixSlivers!);
+    }
+
     if (widget.enablePullDown || widget.enableTwoLevel) {
       slivers?.insert(
           0,
@@ -325,11 +329,7 @@ class SmartRefresherState extends State<SmartRefresher> {
                   : null) ??
               defaultHeader);
     }
-
-    if (widget.prefixSlivers != null) {
-      slivers?.insertAll(0, widget.prefixSlivers!);
-    }
-
+    
     //insert header or footer
     if (widget.enablePullUp) {
       slivers?.add(widget.footer ??
